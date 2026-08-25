@@ -6,15 +6,15 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "mongoose": "^7.5.2"
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mongoose": "^9.9.3"
   },
   "devDependencies": {
-    "jest": "^29.6.4",
-    "nodemon": "^3.0.1"
+    "jest": "^30.1.3",
+    "nodemon": "^3.1.10"
   }
 }

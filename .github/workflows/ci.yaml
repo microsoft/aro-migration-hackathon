@@ -12,12 +12,12 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
       with:
-        node-version: '18'
+        node-version: '22'
         
     - name: Backend - Install dependencies
       working-directory: ./on-prem-app/backend
@@ -25,20 +25,18 @@ jobs:
       
     - name: Backend - Run linting and tests
       working-directory: ./on-prem-app/backend
-      run: |
-        npm run test || true
+      run: npm test
       
     - name: Frontend - Install dependencies
       working-directory: ./on-prem-app/frontend
       run: npm ci
       
-    - name: Frontend - Run linting and tests
+    - name: Frontend - Build
       working-directory: ./on-prem-app/frontend
-      run: |
-        npm run test -- --passWithNoTests || true
+      run: npm run build
     
     - name: Run Trivy vulnerability scanner in repo mode
-      uses: aquasecurity/trivy-action@master
+      uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
       with:
         scan-type: 'fs'
         scan-ref: '.'

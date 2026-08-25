@@ -21,13 +21,13 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3.7.0
       
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      uses: docker/setup-buildx-action@885d1462b80bc1c1c7f0b00334ad271f09369c55 # v2.10.0
       
     - name: Login to Container Registry
-      uses: docker/login-action@v2
+      uses: docker/login-action@465a07811f14bebb1938fbed4728c6a1ff8901fc # v2.2.0
       with:
         registry: ${{ env.REGISTRY_URL }}
         username: ${{ env.REGISTRY_USERNAME }}
@@ -35,7 +35,7 @@ jobs:
         
     - name: Extract metadata (tags, labels)
       id: meta
-      uses: docker/metadata-action@v4
+      uses: docker/metadata-action@818d4b7b91585d195f67373fd9cb0332e31a7175 # v4.6.0
       with:
         images: ${{ env.REGISTRY_URL }}/task-manager-backend
         tags: |
@@ -44,7 +44,7 @@ jobs:
           latest
     
     - name: Build and push backend image
-      uses: docker/build-push-action@v4
+      uses: docker/build-push-action@0a97817b6ade9f46837855d676c4cca3a2471fc9 # v4.2.1
       with:
         context: ./on-prem-app/backend
         push: true
@@ -55,7 +55,7 @@ jobs:
 
     - name: Extract frontend metadata
       id: meta-frontend
-      uses: docker/metadata-action@v4
+      uses: docker/metadata-action@818d4b7b91585d195f67373fd9cb0332e31a7175 # v4.6.0
       with:
         images: ${{ env.REGISTRY_URL }}/task-manager-frontend
         tags: |
@@ -64,7 +64,7 @@ jobs:
           latest
         
     - name: Build and push frontend image
-      uses: docker/build-push-action@v4
+      uses: docker/build-push-action@0a97817b6ade9f46837855d676c4cca3a2471fc9 # v4.2.1
       with:
         context: ./on-prem-app/frontend
         push: true
