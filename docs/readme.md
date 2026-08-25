@@ -167,7 +167,7 @@ az acr login --name $ACR_NAME
 cd on-prem-app/frontend
 
 # Build using the OpenShift-specific Dockerfile
-docker build -t $ACR_NAME.azurecr.io/task-manager-frontend:latest --build-arg REACT_APP_API_URL=/api -f Dockerfile.openshift .
+docker build -t $ACR_NAME.azurecr.io/task-manager-frontend:latest --build-arg VITE_API_URL=/api -f Dockerfile.openshift .
 
 
 # Push the frontend image

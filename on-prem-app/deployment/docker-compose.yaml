@@ -26,11 +26,11 @@ services:
   frontend:
     build:
       context: ../frontend
+      args:
+        VITE_API_URL: http://localhost:3001/api
     restart: always
     ports:
       - "80:80"
-    environment:
-      - REACT_APP_API_URL=http://localhost:3001/api
     depends_on:
       - backend
 
